@@ -1,0 +1,20 @@
+[project]
+name = "demowebshop"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "artur.balsis",email = "artur.balsis@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "pytest (==8.3.5)",
+    "selene (==2.0.0rc9)",
+    "requests (==2.32.3)",
+    "allure-pytest (==2.14.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
