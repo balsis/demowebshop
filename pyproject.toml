@@ -11,7 +11,8 @@ dependencies = [
     "pytest (==8.3.5)",
     "selene (==2.0.0rc9)",
     "requests (==2.32.3)",
-    "allure-pytest (==2.14.0)"
+    "allure-pytest (==2.14.0)",
+    "dotenv (>=0.9.9,<0.10.0)"
 ]
 
 
