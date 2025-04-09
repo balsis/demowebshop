@@ -18,19 +18,19 @@ class CartPage:
         browser.element('.cart-item-row').should(have.text(product_name))
         browser.element('.qty-input').should(have.value(str(quantity)))
 
-    @allure.step("Проверка, что корзина пуста")
-    def cart_should_be_empty(self):
-        browser.element('.page-body').should(have.text('Your Shopping Cart is empty!'))
+    @allure.step("В корзине есть продукты {product_names}")
+    def cart_should_have_products(self, product_names):
+        cart_items = browser.all('.cart-item-row')
+        for idx, product_name in enumerate(product_names):
+            cart_items[idx].should(have.text(product_name))
 
-    @allure.step("В корзине есть продукты {product_name_1} и {product_name_2)")
-    def cart_should_have_products(self, product_name_1, product_name_2):
-        browser.all('.cart-item-row').first.should(have.text(product_name_1))
-        browser.all('.cart-item-row').second.should(have.text(product_name_2))
-
+    @property
     def products_id_in_cart(self):
+        """Получение id товаров для использования при очистке корзины"""
         return [element.get_attribute('value') for element in browser.all('input[name=removefromcart]').locate()]
 
     @staticmethod
+    @allure.step("Очистка корзины")
     def remove_all_products_from_cart():
         for element in browser.all('input[name=removefromcart]'):
             element.should(be.clickable).click()

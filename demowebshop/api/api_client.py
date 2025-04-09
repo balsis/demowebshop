@@ -28,7 +28,7 @@ class ApiClient:
             raise RuntimeError
 
     @allure.step("Добавление продукта с {product_id} в корзину через API")
-    def add_product_in_cart(self, product_id, quantity):
+    def add_product_in_cart(self, product_id, quantity=1):
         url = self.build_url(f'/addproducttocart/details/{product_id}/1')
         data = {f'addtocart_{product_id}.EnteredQuantity': {quantity}}
         response = self.session.post(url = url, data = data, allow_redirects = False)
@@ -37,5 +37,4 @@ class ApiClient:
         return response
 
     def clear_cart(self):
-        pass
-
+        raise NotImplemented
