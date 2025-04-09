@@ -1,5 +1,5 @@
 import allure
-from selene import browser, have
+from selene import browser, have, be
 
 from demowebshop.data.data import Data
 
@@ -26,3 +26,12 @@ class CartPage:
     def cart_should_have_products(self, product_name_1, product_name_2):
         browser.all('.cart-item-row').first.should(have.text(product_name_1))
         browser.all('.cart-item-row').second.should(have.text(product_name_2))
+
+    def products_id_in_cart(self):
+        return [element.get_attribute('value') for element in browser.all('input[name=removefromcart]').locate()]
+
+    @staticmethod
+    def remove_all_products_from_cart():
+        for element in browser.all('input[name=removefromcart]'):
+            element.should(be.clickable).click()
+        browser.element('input[name=updatecart]').click()

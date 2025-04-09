@@ -1,8 +1,5 @@
 import allure
 import requests
-from requests import session
-
-from demowebshop import app
 from demowebshop.data.data import Data
 from demowebshop.helpers import logger
 
@@ -38,3 +35,7 @@ class ApiClient:
         logger.log_http_response(response)
         logger.log_http_response_in_allure(response)
         return response
+
+    def clear_cart(self):
+        pass
+
