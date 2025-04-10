@@ -46,7 +46,6 @@ def log_http_response(response: requests.Response):
 def log_http_response_in_allure(response: requests.Response):
     request = response.request
     request_body = request.body
-    response_body = parse_response_body(response)
 
     allure.attach(
         body = f'Method: {request.method}\nURL: {request.url}',

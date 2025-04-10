@@ -3,11 +3,8 @@ import allure
 from demowebshop import app
 
 
-@allure.parent_suite("demowebshop")
-@allure.suite("Корзина")
 @allure.epic("demowebshop")
 @allure.feature("Корзина")
-@allure.sub_suite("Добавление товаров в корзину")
 @allure.story("Добавление товаров в корзину")
 class TestAddProductInCart:
 
